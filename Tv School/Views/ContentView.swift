@@ -9,29 +9,48 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var show = false
+    @State private var stateOfFrontCard: CGSize = CGSize.zero
     
     var body: some View {
         ZStack{
             titleView
                 .blur(radius: show ? 20 : 0)
-                .animation(Animation.linear)
+                .animation(Animation.linear(duration: 0.01), value: UUID())
             CardStackView(yOffsetValue: -40, backgroundColor: Color("card4"))
                 .scaleEffect(1.06)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees(show ? 10 : 0), yOffset: show ? -300 : 0))
-                .animation(Animation.easeInOut)
+                .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
+                .modifier(CardStackViewModifier(rotationAngle: .degrees(show ? 0 : 10), yOffset: show ? -200 : 0))
+                .animation(Animation.easeInOut, value: UUID())
             CardStackView(yOffsetValue: -20, backgroundColor: Color("card3"))
                 .scaleEffect(1.05)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees( show ? 5 : 0 ), yOffset: show ? -100 : 0))
-                .animation(Animation.easeInOut)
+                .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
+                .modifier(CardStackViewModifier(rotationAngle: .degrees( show ? 0 : 5 ), yOffset: show ? -100 : 0))
+                .animation(Animation.easeInOut, value: UUID())
             CardView()
+                .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
+                .animation(Animation.spring(response: 0.3, dampingFraction: 0.5), value: UUID())
                 .shadow(radius: 20)
                 .onTapGesture {
                     self.show.toggle()
                 }
+                .gesture(drag)
+
             bottomCardView
                 .blur(radius: show ? 20 : 0)
-                .animation(Animation.linear)
+                .animation(Animation.linear(duration: 0.01), value: UUID())
         }
+    }
+    var drag: some Gesture{
+            DragGesture()
+            .onChanged{ value in
+                stateOfFrontCard = value.translation
+                self.show = true
+                
+            }
+                .onEnded{ value in
+                    stateOfFrontCard = .zero
+                    self.show = false
+                }
     }
     var titleView: some View{
         VStack{

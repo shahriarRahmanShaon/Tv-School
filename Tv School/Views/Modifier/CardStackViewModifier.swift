@@ -15,7 +15,7 @@ struct CardStackViewModifier: ViewModifier{
         content
             .offset(x: 0, y: yOffset)
             .rotationEffect(rotationAngle)
-            .rotation3DEffect(rotationAngle, axis: (x: 10, y: 0, z: 0))
+            .rotation3DEffect(rotationAngle, axis: (x: 15, y: 0, z: 0))
             .blendMode(.hardLight)
     }
 }
