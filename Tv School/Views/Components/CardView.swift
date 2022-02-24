@@ -11,6 +11,7 @@ struct CardView: View {
     var logoName = "Logo1"
     var imageName = "Card1"
     var backgroundColorName: Color = .black
+    @Binding var showCard: Bool
     
     var body: some View {
         VStack{
@@ -33,13 +34,13 @@ struct CardView: View {
                 .frame(width: 300, height: 110, alignment: .top)
         }
         .background(backgroundColorName)
-        .frame(width: 340, height: 220)
-        .cornerRadius(25)
+        .frame(width: showCard ? 380 : 340, height: 220)
+        .clipShape(RoundedRectangle(cornerRadius: showCard ? 30 : 20, style: .continuous))
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        CardView(showCard: .constant(true))
     }
 }

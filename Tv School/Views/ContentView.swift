@@ -10,34 +10,42 @@ import SwiftUI
 struct ContentView: View {
     @State private var show = false
     @State private var stateOfFrontCard: CGSize = CGSize.zero
+    @State private var showExpandedCard = false
     
     var body: some View {
         ZStack{
             titleView
                 .blur(radius: show ? 20 : 0)
-                .animation(Animation.linear(duration: 0.01), value: UUID())
-            CardStackView(yOffsetValue: -40, backgroundColor: Color("card4"))
-                .scaleEffect(1.06)
+                .opacity(showExpandedCard ? 0.3 : 1)
+                .offset(x: 0, y: showExpandedCard ? -200 : 0)
+                .animation(Animation.default.delay(0.02), value: UUID())
+            CardStackView(yOffsetValue: -40, backgroundColor: Color("card4"), showCard: $showExpandedCard)
+                .scaleEffect(showExpandedCard ? 1.06 : 1.09)
                 .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees(show ? 0 : 10), yOffset: show ? -200 : 0))
+                .offset(y: showExpandedCard ? -180 : 0)
+                .modifier(CardStackViewModifier(rotationAngle: .degrees(show ? 0 : 10), yOffset: show ? -200 : 0, showCard: $showExpandedCard))
+                .rotationEffect(.degrees(showExpandedCard ? -10 : 0))
                 .animation(Animation.easeInOut, value: UUID())
-            CardStackView(yOffsetValue: -20, backgroundColor: Color("card3"))
-                .scaleEffect(1.05)
+            CardStackView(yOffsetValue: -20, backgroundColor: Color("card3"), showCard: $showExpandedCard)
+                .scaleEffect(showExpandedCard ? 1.07 : 1.08)
                 .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees( show ? 0 : 5 ), yOffset: show ? -100 : 0))
+                .offset(y: showExpandedCard ? -140 : 0)
+                .modifier(CardStackViewModifier(rotationAngle: .degrees( show ? 0 : 5 ), yOffset: show ? -100 : 0, showCard: $showExpandedCard))
+                .rotationEffect(.degrees(showExpandedCard ? -5 : 0))
                 .animation(Animation.easeInOut, value: UUID())
-            CardView()
+            CardView(showCard: $showExpandedCard)
                 .offset(x: stateOfFrontCard.width, y: stateOfFrontCard.height)
+                .offset(y: showExpandedCard ? -100 : 0)
                 .animation(Animation.spring(response: 0.3, dampingFraction: 0.5), value: UUID())
                 .shadow(radius: 20)
                 .onTapGesture {
-                    self.show.toggle()
+                    self.showExpandedCard.toggle()
                 }
                 .gesture(drag)
 
             bottomCardView
                 .blur(radius: show ? 20 : 0)
-                .animation(Animation.linear(duration: 0.01), value: UUID())
+                .animation(Animation.timingCurve(0.09, 0.88, 0.85, 0.41, duration: 0.2), value: UUID())
         }
     }
     var drag: some Gesture{
@@ -81,7 +89,7 @@ struct ContentView: View {
         .background()
         .cornerRadius(35)
         .shadow(radius: 20)
-        .offset(x: 0, y: 525)
+        .offset(x: 0, y: showExpandedCard ? 350 : 1000)
     }
 }
 
@@ -94,12 +102,13 @@ struct ContentView_Previews: PreviewProvider {
 struct CardStackView: View {
     var yOffsetValue: CGFloat = 30
     var backgroundColor: Color = .blue
+    @Binding var showCard: Bool
     
     var body: some View{
         VStack{
             
         }
-        .frame(width: 300, height: 220)
+        .frame(width: showCard ? 350 : 300, height: 220)
         .background(backgroundColor)
         .cornerRadius(25)
         .shadow(radius: 20)
