@@ -8,18 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var show = false
+    
     var body: some View {
         ZStack{
             titleView
+                .blur(radius: show ? 20 : 0)
+                .animation(Animation.linear)
             CardStackView(yOffsetValue: -40, backgroundColor: Color("card4"))
                 .scaleEffect(1.06)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees(10)))
+                .modifier(CardStackViewModifier(rotationAngle: .degrees(show ? 10 : 0), yOffset: show ? -300 : 0))
+                .animation(Animation.easeInOut)
             CardStackView(yOffsetValue: -20, backgroundColor: Color("card3"))
                 .scaleEffect(1.05)
-                .modifier(CardStackViewModifier(rotationAngle: .degrees(5)))
+                .modifier(CardStackViewModifier(rotationAngle: .degrees( show ? 5 : 0 ), yOffset: show ? -100 : 0))
+                .animation(Animation.easeInOut)
             CardView()
                 .shadow(radius: 20)
+                .onTapGesture {
+                    self.show.toggle()
+                }
             bottomCardView
+                .blur(radius: show ? 20 : 0)
+                .animation(Animation.linear)
         }
     }
     var titleView: some View{
