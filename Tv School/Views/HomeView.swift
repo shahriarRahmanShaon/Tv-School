@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var showProfile = false
     @State private var showCard = CGSize.zero
+    @State private var showUpdate = false
     let CourseCardDummydata = [
         CourseCardModel(),
         CourseCardModel(title: "Build a swiftUI app", text: "20 Sections", logo: "Logo1", image: Image("Card3"), color: Color("card3")),
@@ -42,7 +43,7 @@ struct HomeView: View {
     }
     var homeViewBackgroundCard: some View{
         VStack {
-            HStack{
+            HStack(spacing: 16){
                 Text("Watching")
                     .font(.largeTitle)
                     .bold()
@@ -55,10 +56,27 @@ struct HomeView: View {
                         .frame(width: 50, height: 50)
                         .background(.black)
                         .cornerRadius(50)
+                        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
                 }
+                Button {
+                    showUpdate.toggle()
+                } label: {
+                    Image(systemName: "bell")
+                        .font(.system(size: 16, weight: .medium, design: .default))
+                        .frame(width: 35, height: 35)
+                        .background(.white)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
+                }
+
             }
             .padding(.horizontal, 10)
             .padding(.top, 30)
+            .sheet(isPresented: $showUpdate) {
+                ContentView()
+            }
             Spacer()
         }
         .padding(.top, 44)
