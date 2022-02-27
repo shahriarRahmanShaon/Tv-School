@@ -14,6 +14,8 @@
 		005C338927CB0AAB00688876 /* MenuCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338827CB0AAB00688876 /* MenuCard.swift */; };
 		005C338B27CB0D8B00688876 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338A27CB0D8B00688876 /* MenuView.swift */; };
 		005C338D27CB143F00688876 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338C27CB143F00688876 /* HomeView.swift */; };
+		005C338F27CB1FAE00688876 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338E27CB1FAE00688876 /* CourseCard.swift */; };
+		005C339127CB24C100688876 /* CourseCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339027CB24C100688876 /* CourseCardModel.swift */; };
 		008889CA27C789D100E89853 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889C927C789D100E89853 /* CardView.swift */; };
 		008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889CC27C791CF00E89853 /* CardStackViewModifier.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,8 @@
 		005C338827CB0AAB00688876 /* MenuCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCard.swift; sourceTree = "<group>"; };
 		005C338A27CB0D8B00688876 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		005C338C27CB143F00688876 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		005C338E27CB1FAE00688876 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
+		005C339027CB24C100688876 /* CourseCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardModel.swift; sourceTree = "<group>"; };
 		008889C927C789D100E89853 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		008889CC27C791CF00E89853 /* CardStackViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,7 @@
 		007B7EF927C6B8C900DE4E76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				005C339027CB24C100688876 /* CourseCardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			children = (
 				008889C927C789D100E89853 /* CardView.swift */,
 				005C338827CB0AAB00688876 /* MenuCard.swift */,
+				005C338E27CB1FAE00688876 /* CourseCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -201,11 +207,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				005C338927CB0AAB00688876 /* MenuCard.swift in Sources */,
+				005C339127CB24C100688876 /* CourseCardModel.swift in Sources */,
 				005C338D27CB143F00688876 /* HomeView.swift in Sources */,
 				005C338B27CB0D8B00688876 /* MenuView.swift in Sources */,
 				008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */,
 				000F4CB127C41FA10087FD67 /* ContentView.swift in Sources */,
 				008889CA27C789D100E89853 /* CardView.swift in Sources */,
+				005C338F27CB1FAE00688876 /* CourseCard.swift in Sources */,
 				000F4CAF27C41FA10087FD67 /* Tv_SchoolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
