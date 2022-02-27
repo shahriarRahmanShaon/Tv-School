@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var show = false
-    @State private var stateOfFrontCard: CGSize = CGSize.zero
+    @State private var stateOfFrontCard = CGSize.zero
     @State private var showExpandedCard = false
+    @State private var bottomCardState = CGSize.zero
     
     var body: some View {
         ZStack{
@@ -42,11 +43,34 @@ struct ContentView: View {
                     self.showExpandedCard.toggle()
                 }
                 .gesture(drag)
-
             bottomCardView
                 .blur(radius: show ? 20 : 0)
+                .offset(y: bottomCardState.height)
                 .animation(Animation.timingCurve(0.09, 0.88, 0.85, 0.41, duration: 0.2), value: UUID())
+                .gesture(bottomCardDrag)
+            
         }
+    }
+    var bottomCardDrag: some Gesture{
+        DragGesture()
+            .onChanged{ value in
+                bottomCardState = value.translation
+            }
+            .onEnded{ value in
+                if bottomCardState.height > 50 {
+                    showExpandedCard.toggle()
+                }
+                if bottomCardState.height < -100 {
+                    withAnimation {
+                        bottomCardState.height = -280
+                    }
+                }else{
+                    withAnimation {
+                        bottomCardState = .zero
+                    }
+                }
+                
+            }
     }
     var drag: some Gesture{
             DragGesture()
