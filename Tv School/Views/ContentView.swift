@@ -43,8 +43,6 @@ struct ContentView: View {
                     self.showExpandedCard.toggle()
                 }
                 .gesture(drag)
-            Text(String(showExpandedCard)).offset(y: -300)
-            Text("\(bottomCardState.height)").offset(y: -315)
             bottomCardView
                 .blur(radius: show ? 20 : 0)
                 .offset(y: bottomCardState.height)
