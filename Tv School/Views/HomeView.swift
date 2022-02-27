@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showProfile = false
+    @State private var showCard = CGSize.zero
     
     var body: some View {
         ZStack {
@@ -43,9 +44,27 @@ struct HomeView: View {
             .animation(Animation.spring(), value: UUID())
             .edgesIgnoringSafeArea(.all)
             MenuView()
+                .background(Color.black.opacity(0.001))
                 .offset(y: showProfile ? 0 : 600)
+                .offset(y: showCard.height)
                 .animation(Animation.spring(), value: UUID())
+                .onTapGesture {
+                    showProfile.toggle()
+                }
+                .gesture(drag)
         }
+    }
+    var drag: some Gesture{
+        DragGesture()
+            .onChanged{ value in
+                showCard = value.translation
+            }
+            .onEnded{ value in
+                if showCard.height > 50{
+                    showProfile.toggle()
+                }
+                showCard = .zero
+            }
     }
 }
 
