@@ -75,7 +75,7 @@ struct HomeView: View {
             .padding(.horizontal, 10)
             .padding(.top, 30)
             .sheet(isPresented: $showUpdate) {
-                ContentView()
+                UpdateListView()
             }
             Spacer()
         }
