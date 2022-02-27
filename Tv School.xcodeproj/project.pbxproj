@@ -16,6 +16,11 @@
 		005C338D27CB143F00688876 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338C27CB143F00688876 /* HomeView.swift */; };
 		005C338F27CB1FAE00688876 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338E27CB1FAE00688876 /* CourseCard.swift */; };
 		005C339127CB24C100688876 /* CourseCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339027CB24C100688876 /* CourseCardModel.swift */; };
+		005C339527CB2F7F00688876 /* UpdateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339427CB2F7E00688876 /* UpdateListView.swift */; };
+		005C339727CB2F9300688876 /* UpdateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339627CB2F9300688876 /* UpdateListModel.swift */; };
+		005C339927CB34B600688876 /* UpdateDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339827CB34B600688876 /* UpdateDetailVIew.swift */; };
+		005C339B27CB3C3C00688876 /* UpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339A27CB3C3C00688876 /* UpdateViewModel.swift */; };
+		005C339D27CB41B300688876 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339C27CB41B300688876 /* TabBarView.swift */; };
 		008889CA27C789D100E89853 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889C927C789D100E89853 /* CardView.swift */; };
 		008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889CC27C791CF00E89853 /* CardStackViewModifier.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +36,11 @@
 		005C338C27CB143F00688876 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		005C338E27CB1FAE00688876 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		005C339027CB24C100688876 /* CourseCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardModel.swift; sourceTree = "<group>"; };
+		005C339427CB2F7E00688876 /* UpdateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateListView.swift; sourceTree = "<group>"; };
+		005C339627CB2F9300688876 /* UpdateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateListModel.swift; sourceTree = "<group>"; };
+		005C339827CB34B600688876 /* UpdateDetailVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetailVIew.swift; sourceTree = "<group>"; };
+		005C339A27CB3C3C00688876 /* UpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewModel.swift; sourceTree = "<group>"; };
+		005C339C27CB41B300688876 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		008889C927C789D100E89853 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		008889CC27C791CF00E89853 /* CardStackViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				005C339027CB24C100688876 /* CourseCardModel.swift */,
+				005C339627CB2F9300688876 /* UpdateListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +111,9 @@
 				005C338A27CB0D8B00688876 /* MenuView.swift */,
 				000F4CB027C41FA10087FD67 /* ContentView.swift */,
 				005C338C27CB143F00688876 /* HomeView.swift */,
+				005C339827CB34B600688876 /* UpdateDetailVIew.swift */,
+				005C339427CB2F7E00688876 /* UpdateListView.swift */,
+				005C339C27CB41B300688876 /* TabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -107,6 +121,7 @@
 		007B7EFB27C6B8D900DE4E76 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				005C339A27CB3C3C00688876 /* UpdateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -206,14 +221,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005C339527CB2F7F00688876 /* UpdateListView.swift in Sources */,
 				005C338927CB0AAB00688876 /* MenuCard.swift in Sources */,
+				005C339D27CB41B300688876 /* TabBarView.swift in Sources */,
 				005C339127CB24C100688876 /* CourseCardModel.swift in Sources */,
 				005C338D27CB143F00688876 /* HomeView.swift in Sources */,
 				005C338B27CB0D8B00688876 /* MenuView.swift in Sources */,
 				008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */,
+				005C339727CB2F9300688876 /* UpdateListModel.swift in Sources */,
 				000F4CB127C41FA10087FD67 /* ContentView.swift in Sources */,
 				008889CA27C789D100E89853 /* CardView.swift in Sources */,
 				005C338F27CB1FAE00688876 /* CourseCard.swift in Sources */,
+				005C339B27CB3C3C00688876 /* UpdateViewModel.swift in Sources */,
+				005C339927CB34B600688876 /* UpdateDetailVIew.swift in Sources */,
 				000F4CAF27C41FA10087FD67 /* Tv_SchoolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
