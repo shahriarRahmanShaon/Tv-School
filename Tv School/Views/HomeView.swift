@@ -21,15 +21,25 @@ struct HomeView: View {
         ZStack {
             Color.gray.opacity(0.5).edgesIgnoringSafeArea(.all)
             homeViewBackgroundCard
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack(spacing: 16){
-                    ForEach(CourseCardDummydata) { item in
-                        CourseCard(model: item)
-                    }
+            
+            VStack{
+                ScrollView(.horizontal, showsIndicators: false) {
+                    RingWatchView()
+                        .padding()
+                        .padding(.bottom, 12)
                 }
-                .padding()
-                .padding(.bottom, 30) // as it was cliping the shadows
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 16){
+                        ForEach(CourseCardDummydata) { item in
+                            CourseCard(model: item)
+                        }
+                    }
+                    .padding()
+                    .padding(.bottom, 30) // as it was cliping the shadows
+                }
+                Spacer()
             }
+            .padding(.top, 100)
             MenuView()
                 .background(Color.black.opacity(0.001))
                 .offset(y: showProfile ? 0 : 600)
@@ -70,7 +80,7 @@ struct HomeView: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
                         .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
                 }
-
+                
             }
             .padding(.horizontal, 10)
             .padding(.top, 30)
@@ -109,3 +119,29 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+
+struct RingWatchView: View {
+    var body: some View {
+        HStack{
+            HStack(spacing: 10) {
+                RingView(show: .constant(80))
+                VStack(alignment: .leading, spacing: 5){
+                    Text("5 minutes left")
+                        .font(.subheadline)
+                        .bold()
+                    Text("Watched 10 minute today")
+                        .font(.caption)
+                }
+            }
+            .modifier(RingHomeModifier())
+            HStack(spacing: 10) {
+                RingView(show: .constant(80))
+            }
+            .modifier(RingHomeModifier())
+            HStack(spacing: 10) {
+                RingView(show: .constant(80))
+            }
+            .modifier(RingHomeModifier())
+        }
+    }
+}
