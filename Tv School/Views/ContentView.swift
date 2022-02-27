@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var stateOfFrontCard = CGSize.zero
     @State private var showExpandedCard = false
     @State private var bottomCardState = CGSize.zero
+    @State private var ringValue: CGFloat = 0.8
     
     var body: some View {
         ZStack{
@@ -97,6 +98,7 @@ struct ContentView: View {
         }
     }
     var bottomCardView: some View{
+        
         VStack(spacing: 30){
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 50, height: 5)
@@ -105,6 +107,23 @@ struct ContentView: View {
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .lineSpacing(5)
+            HStack(spacing: 10) {
+                RingView(width: 90, height: 90, percentage: "78%", show: $ringValue)
+                    .animation(Animation.easeInOut.delay(0.3), value: UUID())
+                VStack(alignment: .leading, spacing: 7){
+                    Text("SwiftUI")
+                        .bold()
+                    Text("8 of 10 sections have completed\n8 hours spent so far")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .lineSpacing(4)
+                    
+                }
+                .padding()
+                .background(.white)
+                .cornerRadius(20)
+                .shadow(color: .black.opacity(0.2), radius: 15, x: 0, y: 10)
+            }
             Spacer()
             
         }
