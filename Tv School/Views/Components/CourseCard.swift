@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CourseCard: View {
     var model: CourseCardModel
+    var frameWidth: CGFloat = 280
+    var frameHeight: CGFloat = 280
     
     var body: some View {
         VStack(alignment: .leading){
@@ -29,7 +31,7 @@ struct CourseCard: View {
         }
         .padding(.top, 20)
         .padding(.horizontal, 20)
-        .frame(width: 280, height: 280)
+        .frame(width: frameWidth , height: frameHeight)
         .background(model.color)
         .cornerRadius(30)
         .shadow(color: model.color.opacity(0.8), radius: 15, y: 15)

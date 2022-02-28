@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var showExpandedCard = false
     @State private var bottomCardState = CGSize.zero
     @State private var ringValue: CGFloat = 0.8
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack{
@@ -74,16 +75,16 @@ struct ContentView: View {
             }
     }
     var drag: some Gesture{
-            DragGesture()
+        DragGesture()
             .onChanged{ value in
                 stateOfFrontCard = value.translation
                 self.show = true
                 
             }
-                .onEnded{ value in
-                    stateOfFrontCard = .zero
-                    self.show = false
-                }
+            .onEnded{ value in
+                stateOfFrontCard = .zero
+                self.show = false
+            }
     }
     var titleView: some View{
         VStack{
@@ -92,7 +93,18 @@ struct ContentView: View {
                     .font(.title)
                     .bold()
                 Spacer()
-            }.padding(.horizontal, 10)
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .cornerRadius(50)
+
+                }
+            }
+            .padding(.horizontal, 10)
             Image("Background1")
             Spacer()
         }

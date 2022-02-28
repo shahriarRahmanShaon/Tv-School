@@ -11,9 +11,10 @@ struct HomeView: View {
     @State private var showProfile = false
     @State private var showCard = CGSize.zero
     @State private var showUpdate = false
+    @State private var isPresenting = false
     let CourseCardDummydata = [
-        CourseCardModel(),
         CourseCardModel(title: "Build a swiftUI app", text: "20 Sections", logo: "Logo1", image: Image("Card3"), color: Color("card3")),
+        CourseCardModel(),
         CourseCardModel()
     ]
     
@@ -21,25 +22,39 @@ struct HomeView: View {
         ZStack {
             Color.gray.opacity(0.5).edgesIgnoringSafeArea(.all)
             homeViewBackgroundCard
-            
-            VStack{
-                ScrollView(.horizontal, showsIndicators: false) {
-                    RingWatchView()
-                        .padding()
-                        .padding(.bottom, 12)
-                }
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack(spacing: 16){
-                        ForEach(CourseCardDummydata) { item in
-                            CourseCard(model: item)
-                        }
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack{
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        RingWatchView()
+                            .padding()
+                            .padding(.bottom, 12)
+                            .onTapGesture {
+                                isPresenting.toggle()
+                            }
+                    }.fullScreenCover(isPresented: $isPresenting, onDismiss: {
+                        isPresenting = false
+                    }) {
+                        ContentView()
                     }
-                    .padding()
-                    .padding(.bottom, 30) // as it was cliping the shadows
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 16){
+                            ForEach(CourseCardDummydata) { item in
+                                CourseCard(model: item)
+                            }
+                        }
+                        .padding()
+                        .padding(.bottom, 30) // as it was cliping the shadows
+                    }
+                    HStack {
+                        Text("Courses")
+                            .font(.title)
+                            .bold()
+                        Spacer()
+                    }.padding()
+                    CourseCard(model: CourseCardModel(), frameWidth: UIScreen.main.bounds.width - 60, frameHeight: 275)
                 }
-                Spacer()
+                .padding(.top, 90)
             }
-            .padding(.top, 100)
             MenuView()
                 .background(Color.black.opacity(0.001))
                 .offset(y: showProfile ? 0 : 600)
