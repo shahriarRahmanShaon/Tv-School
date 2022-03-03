@@ -22,39 +22,6 @@ struct HomeView: View {
         ZStack {
             Color.gray.opacity(0.5).edgesIgnoringSafeArea(.all)
             homeViewBackgroundCard
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack{
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        RingWatchView()
-                            .padding()
-                            .padding(.bottom, 12)
-                            .onTapGesture {
-                                isPresenting.toggle()
-                            }
-                    }.fullScreenCover(isPresented: $isPresenting, onDismiss: {
-                        isPresenting = false
-                    }) {
-                        ContentView()
-                    }
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 16){
-                            ForEach(CourseCardDummydata) { item in
-                                CourseCard(model: item)
-                            }
-                        }
-                        .padding()
-                        .padding(.bottom, 30) // as it was cliping the shadows
-                    }
-                    HStack {
-                        Text("Courses")
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }.padding()
-                    CourseCard(model: CourseCardModel(), frameWidth: UIScreen.main.bounds.width - 60, frameHeight: 275)
-                }
-                .padding(.top, 90)
-            }
             MenuView()
                 .background(Color.black.opacity(0.001))
                 .offset(y: showProfile ? 0 : 600)
@@ -67,51 +34,83 @@ struct HomeView: View {
         }
     }
     var homeViewBackgroundCard: some View{
-        VStack {
-            HStack(spacing: 16){
-                Text("Watching")
-                    .font(.largeTitle)
-                    .bold()
-                Spacer()
-                Button {
-                    self.showProfile.toggle()
-                } label: {
-                    Image("profile")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .background(.black)
-                        .cornerRadius(50)
-                        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
-                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack{
+                HStack(spacing: 16){
+                    Text("Watching")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                    Button {
+                        self.showProfile.toggle()
+                    } label: {
+                        Image("profile")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .background(.black)
+                            .cornerRadius(50)
+                            .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
+                    }
+                    Button {
+                        showUpdate.toggle()
+                    } label: {
+                        Image(systemName: "bell")
+                            .font(.system(size: 16, weight: .medium, design: .default))
+                            .frame(width: 35, height: 35)
+                            .background(.white)
+                            .clipShape(Circle())
+                            .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
+                    }
                 }
-                Button {
-                    showUpdate.toggle()
-                } label: {
-                    Image(systemName: "bell")
-                        .font(.system(size: 16, weight: .medium, design: .default))
-                        .frame(width: 35, height: 35)
-                        .background(.white)
-                        .clipShape(Circle())
-                        .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
-                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 5)
+                .frame(height: 15)
+                .padding(.horizontal, 10)
+                .padding(.top, 30)
+                .padding(.bottom, 40)
+                .sheet(isPresented: $showUpdate) {
+                    UpdateListView()
                 }
-                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    RingWatchView()
+                        .padding()
+                        .padding(.bottom, 12)
+                        .onTapGesture {
+                            isPresenting.toggle()
+                        }
+                }
+                .fullScreenCover(isPresented: $isPresenting, onDismiss: {
+                    isPresenting = false
+                }) {
+                    ContentView()
+                }
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 16){
+                        ForEach(CourseCardDummydata) { item in
+                            CourseCard(model: item)
+                        }
+                    }
+                    .padding()
+                    .padding(.bottom, 30) // as it was cliping the shadows
+                }
+                HStack {
+                    Text("Courses")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                .padding()
+                CourseCard(model: CourseCardModel(), frameWidth: UIScreen.main.bounds.width - 60, frameHeight: 275)
             }
-            .padding(.horizontal, 10)
-            .padding(.top, 30)
-            .sheet(isPresented: $showUpdate) {
-                UpdateListView()
-            }
-            Spacer()
+            .padding(.top, 44)
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .shadow(radius: 25)
+            .offset(y: showProfile ? -450 : 0)
+            .rotation3DEffect(.degrees(showProfile ? -10 : 0), axis: (x: 10.0, y: 0.0, z: 0.0))
+            .scaleEffect(showProfile ? 0.9 : 1)
+            .animation(Animation.spring(), value: UUID())
         }
-        .padding(.top, 44)
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 25))
-        .shadow(radius: 25)
-        .offset(y: showProfile ? -450 : 0)
-        .rotation3DEffect(.degrees(showProfile ? -10 : 0), axis: (x: 10.0, y: 0.0, z: 0.0))
-        .scaleEffect(showProfile ? 0.9 : 1)
-        .animation(Animation.spring(), value: UUID())
         .edgesIgnoringSafeArea(.all)
     }
     var drag: some Gesture{

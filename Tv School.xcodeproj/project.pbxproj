@@ -11,6 +11,7 @@
 		000F4CB127C41FA10087FD67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F4CB027C41FA10087FD67 /* ContentView.swift */; };
 		000F4CB327C41FA30087FD67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000F4CB227C41FA30087FD67 /* Assets.xcassets */; };
 		000F4CB627C41FA30087FD67 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000F4CB527C41FA30087FD67 /* Preview Assets.xcassets */; };
+		001034C927D05731003948FF /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001034C827D05731003948FF /* CourseListView.swift */; };
 		004FD9AC27CC31FC0031181F /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004FD9AB27CC31FC0031181F /* RingView.swift */; };
 		004FD9AE27CC41F00031181F /* RingHomeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004FD9AD27CC41F00031181F /* RingHomeModifier.swift */; };
 		005C338927CB0AAB00688876 /* MenuCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C338827CB0AAB00688876 /* MenuCard.swift */; };
@@ -33,6 +34,7 @@
 		000F4CB027C41FA10087FD67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		000F4CB227C41FA30087FD67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000F4CB527C41FA30087FD67 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		001034C827D05731003948FF /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
 		004FD9AB27CC31FC0031181F /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		004FD9AD27CC41F00031181F /* RingHomeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingHomeModifier.swift; sourceTree = "<group>"; };
 		005C338827CB0AAB00688876 /* MenuCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCard.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				005C339827CB34B600688876 /* UpdateDetailVIew.swift */,
 				005C339427CB2F7E00688876 /* UpdateListView.swift */,
 				005C339C27CB41B300688876 /* TabBarView.swift */,
+				001034C827D05731003948FF /* CourseListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				005C338927CB0AAB00688876 /* MenuCard.swift in Sources */,
 				005C339D27CB41B300688876 /* TabBarView.swift in Sources */,
 				005C339127CB24C100688876 /* CourseCardModel.swift in Sources */,
+				001034C927D05731003948FF /* CourseListView.swift in Sources */,
 				005C338D27CB143F00688876 /* HomeView.swift in Sources */,
 				005C338B27CB0D8B00688876 /* MenuView.swift in Sources */,
 				008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */,
