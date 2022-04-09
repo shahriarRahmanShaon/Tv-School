@@ -1,29 +1,25 @@
-//
-//  CourseListView.swift
-//  Tv School
-//
-//  Created by sergio shaon on 3/3/22.
-//
-
 import SwiftUI
 
 struct CourseListView: View {
-    @State private var show = false
-    @State private var show2 = false
+    @State private var courses = courseData
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack{
-                CourseView(show: $show)
-                GeometryReader { geo in
-                    CourseView(show: $show2)
-                        .offset( y:  show2 ? -geo.frame(in: .global).minY : 0)
+        ScrollView {
+            VStack(spacing: 30){
+                Text("Courses")
+                    .font(.largeTitle)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 30)
+                ForEach(courses.indices, id: \.self) { itemIndex in
+                    GeometryReader { geo in
+                        CourseView(show: $courses[itemIndex].show, course: courses[itemIndex])
+                            .offset(y: courses[itemIndex].show ? -geo.frame(in: .global).minY : 0 )
+                    }
+                    .frame(height: courses[itemIndex].show ? UIScreen.main.bounds.height : 285)
                 }
-                .frame(height: show2 ? UIScreen.main.bounds.height : 285)
-                .frame(maxWidth: show2 ? .infinity : UIScreen.main.bounds.width - 60)
             }
         }
-        .frame(width: UIScreen.main.bounds.width)
     }
 }
 
@@ -35,13 +31,14 @@ struct CourseListView_Previews: PreviewProvider {
 
 struct CourseView: View {
     @Binding var show: Bool
+    var course: CourseListModel
     
     var body: some View {
         ZStack(alignment: .top) {
             textUnderCard
             cardUpFront
         }
-        .ignoresSafeArea()
+        .frame(width: UIScreen.main.bounds.width)
         .animation(.spring(), value: UUID())
     }
     
@@ -49,15 +46,15 @@ struct CourseView: View {
         VStack{
             HStack{
                 VStack(alignment: .leading, spacing: 8){
-                    Text("SwiftUI Advanced")
+                    Text(course.title)
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.white )
-                    Text("20 Sections")
+                    Text(course.subString)
                         .foregroundColor(.white.opacity(0.6))
                 }
                 Spacer()
                 ZStack {
-                    Image("Logo1")
+                    course.logo
                         .opacity(show ? 0 : 1)
                     Image(systemName: "xmark")
                         .foregroundColor(.white)
@@ -72,19 +69,19 @@ struct CourseView: View {
                 }
             }
             Spacer()
-            Image("Card5")
+            course.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .frame(height: 180)
         }
-        .padding(show ? 20 : 10)
+        .padding(show ? 30 : 20)
         .padding(show ? 30 : 0)
-        .frame(maxWidth: show ? .infinity : UIScreen.main.bounds.width - 60, maxHeight: show ? 465 : 285)
+        .frame(maxWidth: show ? .infinity : UIScreen.main.bounds.width - 60, maxHeight: show ? 450 : 280)
         .ignoresSafeArea()
-        .background(.blue)
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .shadow(color: .blue.opacity(0.3), radius: 20, x: 0, y: 20 )
+        .background(course.color)
+        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .shadow(color: course.color.opacity(0.3), radius: 10, x: 10, y: 0 )
         .onTapGesture {
             show.toggle()
         }

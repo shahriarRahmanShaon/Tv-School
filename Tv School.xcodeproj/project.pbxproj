@@ -26,6 +26,7 @@
 		005C339D27CB41B300688876 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C339C27CB41B300688876 /* TabBarView.swift */; };
 		008889CA27C789D100E89853 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889C927C789D100E89853 /* CardView.swift */; };
 		008889CD27C791CF00E89853 /* CardStackViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008889CC27C791CF00E89853 /* CardStackViewModifier.swift */; };
+		00E82FA9280177B90018F6EB /* CourseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E82FA8280177B90018F6EB /* CourseListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		005C339C27CB41B300688876 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		008889C927C789D100E89853 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		008889CC27C791CF00E89853 /* CardStackViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackViewModifier.swift; sourceTree = "<group>"; };
+		00E82FA8280177B90018F6EB /* CourseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				005C339027CB24C100688876 /* CourseCardModel.swift */,
 				005C339627CB2F9300688876 /* UpdateListModel.swift */,
+				00E82FA8280177B90018F6EB /* CourseListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				005C339527CB2F7F00688876 /* UpdateListView.swift in Sources */,
 				005C338927CB0AAB00688876 /* MenuCard.swift in Sources */,
 				005C339D27CB41B300688876 /* TabBarView.swift in Sources */,
+				00E82FA9280177B90018F6EB /* CourseListModel.swift in Sources */,
 				005C339127CB24C100688876 /* CourseCardModel.swift in Sources */,
 				001034C927D05731003948FF /* CourseListView.swift in Sources */,
 				005C338D27CB143F00688876 /* HomeView.swift in Sources */,
